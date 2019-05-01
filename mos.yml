@@ -1,0 +1,37 @@
+author: Forrest Wallace, Cullen Jemison
+type: lib
+description: Bluetooth service to setup wifi credentials
+version: 1.0
+# platforms: [ cc3200, cc3220, esp32, esp8266 ]
+
+sources:
+  - src
+
+includes:
+  - include
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/bt-common
+
+config_schema:
+  - [ "bt_wifi_setup", "o", {title: "Bluetooth device setup configurations"}]
+  - [ "bt_wifi_setup.auth_key", "s", "", {title: "Auth code for bluetooth setup"}]
+  - [ "bt_wifi_setup.auth_key_len", "i", 6, {title: "Length of auth key for bluetooth setup (should match auth key if specified)"}]
+  - [ "bt_wifi_setup.require_auth", "b", true, {title: "Always require connected devices to enter auth code"}]
+  - [ "bt_wifi_setup.always_advertise", "b", false, {title: "Advertise always, even when not triggered"}]
+
+  - ["bt.enable", true]
+  - ["bt.keep_enabled", true]
+# - ["bt.allow_pairing", false]
+# - ["bt.gatts.require_pairing", false]
+# - ["bt.max_paired_devices", 1]
+# - ["bt.gatts.min_sec_level", 1]
+
+tags:
+  - bt
+  - bluetooth
+  - wifi
+  - setup
+  - c
+
+manifest_version: 2017-09-29
